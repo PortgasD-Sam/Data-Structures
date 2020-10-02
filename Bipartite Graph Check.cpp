@@ -14,11 +14,11 @@ bool dfs_bipartite(int src, int c) {
 	visited[src] = 1;		//make the node visited in the 'visited' vector
 	color[src] = c;
 	for (auto nbr : graph[src]) {		//traverse the neighbours of the current node
-		if (!visited[nbr]) {
-			if (dfs_bipartite(nbr, c ^ 1) == false)
+		if (!visited[nbr]) {			//If neighbour is not visited
+			if (dfs_bipartite(nbr, c ^ 1) == false)	//call dfs on it and change the color
 				return false;
 		}
-		else if (color[src] == color[nbr])
+		else if (color[src] == color[nbr])	//check if color of source and neighbour are same
 			return false;
 	}
 	return true;
